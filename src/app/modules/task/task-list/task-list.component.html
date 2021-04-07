@@ -1,0 +1,35 @@
+<div>
+  <div>
+    <h2>To Do L ist</h2>
+  </div>
+
+  <div>
+    <form>
+      <!--    Tim kiếm-->
+      <input type="text" [ngModel]="keySearch" placeholder="Search..." class="form-control"
+             [ngModelOptions]="{standalone: true}"
+             (input)="onSearch($event)">
+    </form>
+  </div>
+  <div>
+    <!--    Danh sách kết quả-->
+    <button >Add</button>
+    <table>
+      <tbody *ngFor="let item of itemList; index as i">
+      <td><input type="checkbox" id="check + {{i}}" name="check + {{i}}" value="1"></td>
+      <td>{{item.name}}</td>
+      <td>
+        <button (click)="openModal('VIEW', item)">Detail</button>
+      </td>
+      <td>
+        <button>Remove</button>
+      </td>
+      </tbody>
+    </table>
+    <div
+      *ngIf="!itemList || itemList.length === 0">
+      <p>No Data</p>
+    </div>
+  </div>
+</div>
+
